@@ -28,10 +28,27 @@ export interface IDropdown {
 }
 
 export interface ISelectInputProps {
+  selectedOptions?: IOptionItem[] | undefined
   isSelected?: boolean;
   isOutlined?: boolean;
+  setSelectedOptions?: (value: IOptionItem | null) => void;
   setIsSelected?: (value: boolean) => void;
   setIsOutlined?: (value: boolean) => void;
+}
+
+export interface IOptionProps {
+  option: IOptionData;
+  icon?: string;
+  isSelected?: boolean;
+  styles?: IOptionStyles;
+}
+
+export interface IDropdownSearchProps {
+  withSearch?: boolean;
+  options?: IOptionItem[];
+  selectedOptions?: IOptionItem[];
+  dropdownStyles?: IDropdownStyles;
+  optionStyles?: IOptionStyles;
 }
 
 // for styles and customization
@@ -54,7 +71,9 @@ export interface IOptionStyles {
   padding?: ISpacing;
   margin?: ISpacing;
   backgroundColor?: string;
+  activeBackgroundColor?: string;
   textColor?: string;
+  activeTextColor?: string;
   fontSize?: number;
   fontStyle?: string;
   iconSize?: string;
@@ -73,11 +92,14 @@ export interface ISelectInputStyles {
 }
 
 // main select dropdown module styles
-export interface ISelectDropdownStyles {
-  padding?: ISpacing;
-  margin?: ISpacing;
-  backgroundColor?: string;
-  textColor?: string;
-  fontSize?: number;
-  fontStyle?: string;
+export interface ISelectDropdownProps {
+  id?: string;
+  options?: IOptionItem[];
+  outlined?: boolean;
+  withSearch?: boolean;
+  multiple?: boolean;
+  optionLabel?: string;
+  dropdownStyles?: IDropdownStyles;
+  optionStyles?: IOptionStyles;
+  onChange?: () => void;
 }
